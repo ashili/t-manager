@@ -10,8 +10,8 @@ import ListView from './components/ListView/ListView';
 import AddTask from './components/AddTask/AddTask';
 
 export default class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       allTasks: [],
       todo: [],
