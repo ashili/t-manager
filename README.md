@@ -1,4 +1,4 @@
-# Project 2 for IS 332
+# Project 2 for IS 322
 
 a task manager using ReactJS
 
