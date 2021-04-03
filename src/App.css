@@ -1,20 +1,46 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
-
 
 
 .GridView {
-  width:80%;
-  display: grid;
-  margin: 50px auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 30px;
-  row-gap: 10px;
-  min-height: 200px;
-  padding: 20px;
+    width: 80%;
+    display: grid;
+    margin: 50px auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 10px;
+    min-height: 200px;
+    padding: 20px;
 }
 
-.todo {
-  background-color: red;
+.GridView .todo{
+    background-color: #fed049;
+}
+
+
+
+@media only screen and (max-width: 1500px) {
+    .GridView {
+        width: 90%;
+        display: grid;
+        margin: 30px auto;
+        grid-template-columns: 1fr 1fr ;
+        column-gap: 30px;
+        row-gap: 10px;
+        min-height: 200px;
+        padding: 20px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .GridView {
+        width: 80%;
+        display: grid;
+        margin: 50px auto;
+        grid-template-columns: 1fr  ;
+        column-gap: 30px;
+        row-gap: 10px;
+        min-height: 200px;
+        padding: 20px;
+    }
 }

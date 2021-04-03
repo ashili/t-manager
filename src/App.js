@@ -60,11 +60,6 @@ export default class App extends Component {
     });
   };
 
-  addItem = (src, dest, item) => {
-    this.setState({
-      dest: [...this.state.todo, item],
-    });
-  };
   // update = (source, destination, arr, idx) => {
   //   let item = arr[idx];
   //   arr.splice(idx, 1);
@@ -78,7 +73,6 @@ export default class App extends Component {
     if (result.destination === null) {
       return;
     }
-    console.log(result);
     // const idx = parseInt(result.draggableId.substring(1));
     const todos = [...this.state.todo];
     const wips = Object.assign([], this.state.wip);
@@ -90,8 +84,8 @@ export default class App extends Component {
     console.log(srcIndex, 'in', srcCol, 'to ', dstIndex, 'to ', dstCol);
 
     if (!result.destination) return;
-
     if (srcCol !== dstCol) {
+      //TODO; refactor into update function (see above)
       if (srcCol === 'todo' && dstCol === 'wip') {
         const item = todos[srcIndex];
         todos.splice(srcIndex, 1);
@@ -100,6 +94,7 @@ export default class App extends Component {
           wip: [...this.state.wip, item],
         });
       }
+
       if (srcCol === 'wip' && dstCol === 'todo') {
         const item = wips[srcIndex];
         wips.splice(srcIndex, 1);
@@ -169,6 +164,8 @@ export default class App extends Component {
             <Route exact path='/'>
               <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className='GridView'>
+                  {//TODO: refactor into 1 function and 1 array then map through
+                    }
                   <GridView
                     className='todo'
                     tasks={this.state.todo}
