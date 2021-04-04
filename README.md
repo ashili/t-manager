@@ -1,19 +1,24 @@
 # Project 2 for IS 322
 
-a task manager using ReactJS
+A task manager using ReactJS
 
 ### Use:
 
-download the repo using:
+Download the repo using:
 
 ```bash
 git clone
 ```
 
 then:
-
 ```bash
 cd t-manager
+```
+
+then:
+
+```bash
+npm install
 ```
 
 then:
@@ -25,11 +30,11 @@ npm start
 ### Frameworks and libraries used:
 
 - React
-- axios
+- Axios
 - Material UI
-- react beautiful dnd
-- my-json
+- React beautiful dnd
+- My-json
 
 ### Purpose:
 
-getting familiar with the React framework.
+Getting familiar with the React framework.
