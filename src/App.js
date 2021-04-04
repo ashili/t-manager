@@ -60,115 +60,39 @@ export default class App extends Component {
     });
   };
 
-  // update = (source, destination, arr, idx) => {
-  //   let item = arr[idx];
-  //   arr.splice(idx, 1);
-  //   this.setState({
-  //     [source]: arr,
-  //     [destination]: [this.state[destination], item],
-  //   });
-  // };
+  update = (sIndex, dIndex, arr,  destArrName, arrName) => {
+    let item = arr[sIndex];
+    arr.splice(sIndex, 1);
+    this.setState({
+      [arrName]: arr,
+      [destArrName]: [...this.state[destArrName], item],
+    });
+  };
 
   onDragEnd = (result) => {
-    if (result.destination === null) {
-      return;
-    }
-    // const idx = parseInt(result.draggableId.substring(1));
+    if (!result.destination) return;
+
     const todos = [...this.state.todo];
-    const wips = Object.assign([], this.state.wip);
-    const reviews = Object.assign([], this.state.review);
+    const wips = [...this.state.wip];
+    const reviews = [...this.state.review];
+    const dones = [...this.state.done];
     const srcIndex = result.source.index;
     const dstIndex = result.destination.index;
     const srcCol = result.source.droppableId;
     const dstCol = result.destination.droppableId;
-    console.log(srcIndex, 'in', srcCol, 'to ', dstIndex, 'to ', dstCol);
-
-    if (!result.destination) return;
-    if (srcCol !== dstCol) {
-      //TODO; refactor into update function (see above)
-      if (srcCol === 'todo' && dstCol === 'wip') {
-        const item = todos[srcIndex];
-        todos.splice(srcIndex, 1);
-        this.setState({
-          todo: todos,
-          wip: [...this.state.wip, item],
-        });
-      }
-
-      if (srcCol === 'wip' && dstCol === 'todo') {
-        const item = wips[srcIndex];
-        wips.splice(srcIndex, 1);
-        this.setState({
-          wip: wips,
-          todo: [...this.state.todo, item],
-        });
-      }
-      if (srcCol === 'wip' && dstCol === 'review') {
-        const item = wips[srcIndex];
-        wips.splice(srcIndex, 1);
-        this.setState({
-          wip: wips,
-          review: [...this.state.review, item],
-        });
-      }
-      if (srcCol === 'review' && dstCol === 'todo') {
-        const item = reviews[srcIndex];
-        reviews.splice(srcIndex, 1);
-        this.setState({
-          review: reviews,
-          todo: [...this.state.todo, item],
-        });
-      }
-      if (srcCol === 'review' && dstCol === 'wip') {
-        const item = reviews[srcIndex];
-        reviews.splice(srcIndex, 1);
-        this.setState({
-          review: reviews,
-          wip: [...this.state.wip, item],
-        });
-      }
-      if (srcCol === 'todo' && dstCol === 'review') {
-        const item = todos[srcIndex];
-        todos.splice(srcIndex, 1);
-        this.setState({
-          todo: todos,
-          review: [...this.state.review, item],
-        });
-      }
-      if (srcCol === 'wip' && dstCol === 'review') {
-        const item = wips[srcIndex];
-        wips.splice(srcIndex, 1);
-        this.setState({
-          wip: wips,
-          review: [...this.state.review, item],
-        });
-      }
-
-      if (srcCol === 'todo' && dstCol === 'done') {
-        const item = todos[srcIndex];
-        todos.splice(srcIndex, 1);
-        this.setState({
-          todo: todos,
-          done: [...this.state.done, item],
-        });
-      }
-      if (srcCol === 'review' && dstCol === 'done') {
-        const item = reviews[srcIndex];
-        reviews.splice(srcIndex, 1);
-        this.setState({
-          review: reviews,
-          done: [...this.state.done, item],
-        });
-      }
-      if (srcCol === 'wip' && dstCol === 'done') {
-        const item = wips[srcIndex];
-        wips.splice(srcIndex, 1);
-        this.setState({
-          wip: wips,
-          done: [...this.state.done, item],
-        });
-      }
+    if(srcCol === "todo"  && dstCol){
+      this.update(srcIndex,dstIndex,todos,dstCol,srcCol)
     }
+    if(srcCol === "wip"  && dstCol){
+      this.update(srcIndex,dstIndex,wips,dstCol,srcCol)
+    }
+    if(srcCol === "review"  && dstCol){
+      this.update(srcIndex,dstIndex,reviews,dstCol,srcCol)
+    }
+    if(srcCol === "done"  && dstCol){
+      this.update(srcIndex,dstIndex,dones,dstCol,srcCol)
+    }
+
   };
 
   render() {
