@@ -103,6 +103,14 @@ export default class App extends Component {
           todo: [...this.state.todo, item],
         });
       }
+      if (srcCol === 'wip' && dstCol === 'review') {
+        const item = wips[srcIndex];
+        wips.splice(srcIndex, 1);
+        this.setState({
+          wip: wips,
+          review: [...this.state.review, item],
+        });
+      }
       if (srcCol === 'review' && dstCol === 'todo') {
         const item = reviews[srcIndex];
         reviews.splice(srcIndex, 1);
@@ -124,6 +132,14 @@ export default class App extends Component {
         todos.splice(srcIndex, 1);
         this.setState({
           todo: todos,
+          review: [...this.state.review, item],
+        });
+      }
+      if (srcCol === 'wip' && dstCol === 'review') {
+        const item = wips[srcIndex];
+        wips.splice(srcIndex, 1);
+        this.setState({
+          wip: wips,
           review: [...this.state.review, item],
         });
       }
@@ -164,8 +180,9 @@ export default class App extends Component {
             <Route exact path='/'>
               <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className='GridView'>
-                  {//TODO: refactor into 1 function and 1 array then map through
-                    }
+                  {
+                    //TODO: refactor into 1 function and 1 array then map through
+                  }
                   <GridView
                     className='todo'
                     tasks={this.state.todo}
