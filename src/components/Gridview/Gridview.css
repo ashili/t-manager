@@ -1,0 +1,24 @@
+.Gridview {
+    margin: 0 auto;
+    background-color: rgb(183, 192, 193);
+    border-radius: 10px;
+    min-width: 100%;
+}
+
+.title{
+    border-bottom: solid 2px black;
+    padding:15px;
+}
+.TODO{
+    background-color: #75cfb8;
+}
+.WIP{
+    background-color: #bbdfc8;
+}
+.REVIEW{
+    background-color: #f0e5d8;
+}
+.DONE{
+    background-color: #d8ebe4;
+}
+

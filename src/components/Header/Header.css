@@ -1,0 +1,17 @@
+.Header {
+    display: flex;
+    flex-direction: columns;
+}
+
+.Header .Head {
+    background-image: linear-gradient(45deg, grey, rgb(87, 138, 138), grey);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Header .links {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
