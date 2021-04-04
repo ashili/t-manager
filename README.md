@@ -23,7 +23,7 @@ npm install
 
 then:
 
-```bash
+```console
 npm start
 ```
 
